@@ -2,6 +2,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { postgresAdapter } from '@payloadcms/db-postgres'
 import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
@@ -19,21 +20,30 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 const mongoURL = process.env.DATABASE_URI || process.env.MONGODB_URI
+const postgresURL = process.env.POSTGRES_URL || process.env.DATABASE_URL_POSTGRES
 const sqliteURL = process.env.DATABASE_URL || 'file:./deeksha-cms.db'
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
 
-const db = mongoURL
-  ? mongooseAdapter({
-      url: mongoURL,
-    })
-  : sqliteAdapter({
-      client: {
-        url: sqliteURL,
-      },
-      migrationDir: path.resolve(dirname, 'src/migrations'),
-      prodMigrations: migrations,
+const getDB = () => {
+  if (mongoURL) {
+    return mongooseAdapter({ url: mongoURL })
+  }
+  if (postgresURL) {
+    return postgresAdapter({
+      pool: { connectionString: postgresURL },
       push: false,
+      migrationDir: path.resolve(dirname, 'src/migrations'),
     })
+  }
+  return sqliteAdapter({
+    client: { url: sqliteURL },
+    migrationDir: path.resolve(dirname, 'src/migrations'),
+    prodMigrations: migrations,
+    push: false,
+  })
+}
+
+const db = getDB()
 
 export default buildConfig({
   admin: {
