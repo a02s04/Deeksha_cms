@@ -1,6 +1,7 @@
 {
 	"type": "module",
 	"dependencies": {
+		"@libsql/client": "^0.17.3",
 		"@payloadcms/db-mongodb": "^3.80.0",
 		"@payloadcms/db-postgres": "^3.80.0",
 		"@payloadcms/db-sqlite": "3.80.0",
