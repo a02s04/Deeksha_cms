@@ -3,7 +3,6 @@ import { fileURLToPath } from 'node:url'
 
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { postgresAdapter } from '@payloadcms/db-postgres'
-import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { buildConfig } from 'payload'
 
@@ -28,18 +27,10 @@ const getDB = () => {
   if (mongoURL) {
     return mongooseAdapter({ url: mongoURL })
   }
-  if (postgresURL) {
-    return postgresAdapter({
-      pool: { connectionString: postgresURL },
-      push: false,
-      migrationDir: path.resolve(dirname, 'src/migrations'),
-    })
-  }
-  return sqliteAdapter({
-    client: { url: sqliteURL },
-    migrationDir: path.resolve(dirname, 'src/migrations'),
-    prodMigrations: migrations,
+  return postgresAdapter({
+    pool: { connectionString: postgresURL || '' },
     push: false,
+    migrationDir: path.resolve(dirname, 'src/migrations'),
   })
 }
 
