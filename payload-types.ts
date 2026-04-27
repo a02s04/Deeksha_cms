@@ -617,6 +617,160 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface SiteSetting {
   id: number;
+  themeSettings?: {
+    colorTheme?: ('heritage' | 'forest' | 'charcoal') | null;
+    fontPairing?: ('classic' | 'modern' | 'editorial') | null;
+  };
+  /**
+   * Controls the static text, images, gallery, video, and process sections on the homepage.
+   */
+  homePage?: {
+    hero?: {
+      eyebrow?: string | null;
+      titleLine1?: string | null;
+      titleLine2?: string | null;
+      titleLine3?: string | null;
+      description?: string | null;
+      primaryCtaLabel?: string | null;
+      secondaryCtaLabel?: string | null;
+      statsText?: string | null;
+      /**
+       * Used as the first hero/background image.
+       */
+      beforeImage?: (number | null) | Media;
+      /**
+       * Used as the second hero/background image in the reveal animation.
+       */
+      afterImage?: (number | null) | Media;
+    };
+    gallery?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      description?: string | null;
+      items?:
+        | {
+            image?: (number | null) | Media;
+            title: string;
+            detail?: string | null;
+            size?: ('normal' | 'large' | 'tall' | 'wide') | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    portfolio?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      description?: string | null;
+      videoTitle?: string | null;
+      /**
+       * Upload MP4/WebM videos in Media.
+       */
+      videoFile?: (number | null) | Media;
+      videoPoster?: (number | null) | Media;
+      /**
+       * Optional YouTube/Vimeo URL. Used when no video file is selected.
+       */
+      videoEmbedUrl?: string | null;
+    };
+    whyChooseUs?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      description?: string | null;
+      items?:
+        | {
+            icon?: ('wood' | 'hands' | 'ruler' | 'truck' | 'leaf' | 'chat') | null;
+            title: string;
+            body: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    about?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      image?: (number | null) | Media;
+      paragraphs?:
+        | {
+            text: string;
+            id?: string | null;
+          }[]
+        | null;
+      stats?:
+        | {
+            value: number;
+            suffix?: string | null;
+            label: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    process?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      description?: string | null;
+      steps?:
+        | {
+            number: string;
+            title: string;
+            body: string;
+            id?: string | null;
+          }[]
+        | null;
+    };
+    contact?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      description?: string | null;
+      workingHours?: string | null;
+      /**
+       * Optional Google Maps embed URL for the contact map area.
+       */
+      mapEmbedUrl?: string | null;
+    };
+    /**
+     * Showcase completed projects and past work on the website.
+     */
+    previousWork?: {
+      eyebrow?: string | null;
+      heading?: string | null;
+      description?: string | null;
+      /**
+       * Add, remove, reorder, or edit previous work items here.
+       */
+      items?:
+        | {
+            image?: (number | null) | Media;
+            title: string;
+            category?: ('bedroom' | 'living-room' | 'dining' | 'office' | 'outdoor' | 'custom') | null;
+            /**
+             * City or area where this project was delivered.
+             */
+            location?: string | null;
+            /**
+             * Year of completion, e.g. 2025.
+             */
+            year?: string | null;
+            description?: string | null;
+            id?: string | null;
+          }[]
+        | null;
+    };
+  };
+  testimonialSection?: {
+    eyebrow?: string | null;
+    heading?: string | null;
+    /**
+     * Admins can add, remove, reorder, or edit homepage testimonials here.
+     */
+    items?:
+      | {
+          quote: string;
+          author: string;
+          rating?: number | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
   whatsappNumber: string;
   displayPhone: string;
   contactEmail: string;
@@ -642,6 +796,149 @@ export interface SiteSetting {
  * via the `definition` "site-settings_select".
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
+  themeSettings?:
+    | T
+    | {
+        colorTheme?: T;
+        fontPairing?: T;
+      };
+  homePage?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              eyebrow?: T;
+              titleLine1?: T;
+              titleLine2?: T;
+              titleLine3?: T;
+              description?: T;
+              primaryCtaLabel?: T;
+              secondaryCtaLabel?: T;
+              statsText?: T;
+              beforeImage?: T;
+              afterImage?: T;
+            };
+        gallery?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    detail?: T;
+                    size?: T;
+                    id?: T;
+                  };
+            };
+        portfolio?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              videoTitle?: T;
+              videoFile?: T;
+              videoPoster?: T;
+              videoEmbedUrl?: T;
+            };
+        whyChooseUs?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              items?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    body?: T;
+                    id?: T;
+                  };
+            };
+        about?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              image?: T;
+              paragraphs?:
+                | T
+                | {
+                    text?: T;
+                    id?: T;
+                  };
+              stats?:
+                | T
+                | {
+                    value?: T;
+                    suffix?: T;
+                    label?: T;
+                    id?: T;
+                  };
+            };
+        process?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              steps?:
+                | T
+                | {
+                    number?: T;
+                    title?: T;
+                    body?: T;
+                    id?: T;
+                  };
+            };
+        contact?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              workingHours?: T;
+              mapEmbedUrl?: T;
+            };
+        previousWork?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              description?: T;
+              items?:
+                | T
+                | {
+                    image?: T;
+                    title?: T;
+                    category?: T;
+                    location?: T;
+                    year?: T;
+                    description?: T;
+                    id?: T;
+                  };
+            };
+      };
+  testimonialSection?:
+    | T
+    | {
+        eyebrow?: T;
+        heading?: T;
+        items?:
+          | T
+          | {
+              quote?: T;
+              author?: T;
+              rating?: T;
+              id?: T;
+            };
+      };
   whatsappNumber?: T;
   displayPhone?: T;
   contactEmail?: T;

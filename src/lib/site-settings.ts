@@ -17,9 +17,12 @@ export type ResolvedPaymentSettings = {
 export type ResolvedSiteSettings = {
   contactEmail: string
   displayPhone: string
+  homePage?: unknown
   instagramHandle: string
   instagramUrl: string
   paymentSettings: ResolvedPaymentSettings
+  testimonialSection?: unknown
+  themeSettings?: unknown
   whatsappNumber: string
   workshopAddress: string
 }
@@ -27,6 +30,7 @@ export type ResolvedSiteSettings = {
 const defaultSettings: ResolvedSiteSettings = {
   contactEmail: process.env.CONTACT_EMAIL || 'hello@mdlhandicrafts.in',
   displayPhone: process.env.DISPLAY_PHONE || '+91 98765 43210',
+  homePage: undefined,
   instagramHandle: process.env.INSTAGRAM_HANDLE || '@mdl_handicrafts',
   instagramUrl: process.env.INSTAGRAM_URL || 'https://instagram.com/mdl_handicrafts',
   paymentSettings: {
@@ -40,6 +44,11 @@ const defaultSettings: ResolvedSiteSettings = {
     paymentInstructions:
       'Share your order reference after payment so we can confirm your build slot and delivery timeline.',
     upiId: process.env.UPI_ID || 'payments@deeksha',
+  },
+  testimonialSection: undefined,
+  themeSettings: {
+    colorTheme: 'heritage',
+    fontPairing: 'classic',
   },
   whatsappNumber: process.env.WHATSAPP_NUMBER || '919876543210',
   workshopAddress: '[Full Address Line 1]\n[Jaipur, Rajasthan - pincode]',
@@ -76,7 +85,7 @@ export const resolveSiteSettings = async (payload: Payload): Promise<ResolvedSit
   try {
     const settings = await payload.findGlobal({
       slug: 'site-settings',
-      depth: 0,
+      depth: 1,
       overrideAccess: true,
     })
 
@@ -88,6 +97,7 @@ export const resolveSiteSettings = async (payload: Payload): Promise<ResolvedSit
     return {
       contactEmail: settings.contactEmail || defaultSettings.contactEmail,
       displayPhone,
+      homePage: settings.homePage || defaultSettings.homePage,
       instagramHandle: settings.instagramHandle || defaultSettings.instagramHandle,
       instagramUrl: settings.instagramUrl || defaultSettings.instagramUrl,
       paymentSettings: {
@@ -119,6 +129,8 @@ export const resolveSiteSettings = async (payload: Payload): Promise<ResolvedSit
           settings.paymentSettings?.upiId ||
           defaultSettings.paymentSettings.upiId,
       },
+      testimonialSection: settings.testimonialSection || defaultSettings.testimonialSection,
+      themeSettings: settings.themeSettings || defaultSettings.themeSettings,
       whatsappNumber,
       workshopAddress: settings.workshopAddress || defaultSettings.workshopAddress,
     }

@@ -764,7 +764,6 @@
 
     .hero-line {
       display: block;
-      overflow: hidden;
     }
 
     .hero-line span {
@@ -1139,6 +1138,15 @@
       padding: 24px;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    .video-wrapper iframe,
+    .video-wrapper video {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      object-fit: cover;
     }
 
     #shop {
@@ -1875,6 +1883,13 @@
       position: relative;
       z-index: 1;
       background: var(--white);
+    }
+
+    .about-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
     }
 
     .about-copy h2 {
@@ -2755,26 +2770,26 @@
       <section class="hero" id="hero">
         <div class="hero-stage">
           <div class="hero-scene" aria-hidden="true">
-            <img src="/images/hero-room-before.jpg" alt="" loading="eager" fetchpriority="high">
+            <img id="hero-before-image" src="/images/hero-room-before.jpg" alt="" loading="eager" fetchpriority="high">
             <div class="hero-scene-after" id="before-after-after">
-              <img src="/images/hero-room-after.jpg" alt="" loading="eager" fetchpriority="high">
+              <img id="hero-after-image" src="/images/hero-room-after.jpg" alt="" loading="eager" fetchpriority="high">
             </div>
             <div class="hero-scene-overlay"></div>
           </div>
           <div class="hero-grid">
             <div class="hero-copy reveal visible">
-              <p class="eyebrow">Handcrafted in Rajasthan</p>
+              <p class="eyebrow" id="hero-eyebrow">Handcrafted in Rajasthan</p>
               <h1 class="hero-title">
-                <span class="hero-line"><span style="--delay:0.1s;">Furniture</span></span>
-                <span class="hero-line"><span style="--delay:0.3s;">built to last</span></span>
-                <span class="hero-line"><span style="--delay:0.5s;">generations.</span></span>
+                <span class="hero-line"><span id="hero-title-line-1" style="--delay:0.1s;">Furniture</span></span>
+                <span class="hero-line"><span id="hero-title-line-2" style="--delay:0.3s;">built to last</span></span>
+                <span class="hero-line"><span id="hero-title-line-3" style="--delay:0.5s;">generations.</span></span>
               </h1>
-              <p>We make solid hardwood furniture by hand - beds, sofas, tables, and more - built exactly to your vision, delivered to your home.</p>
+              <p id="hero-description">We make solid hardwood furniture by hand - beds, sofas, tables, and more - built exactly to your vision, delivered to your home.</p>
               <div class="hero-actions">
-                <a class="btn btn-primary" href="#collections">Explore Collections</a>
-                <a class="btn btn-secondary" href="#portfolio">View Our Work</a>
+                <a class="btn btn-primary" id="hero-primary-cta" href="#collections">Explore Collections</a>
+                <a class="btn btn-secondary" id="hero-secondary-cta" href="#portfolio">View Our Work</a>
               </div>
-              <div class="hero-stats">
+              <div class="hero-stats" id="hero-stats">
                 <span>15+ Years</span>
                 <span>&middot;</span>
                 <span>2,400+ Pieces</span>
@@ -2799,9 +2814,9 @@
       <section class="section alt" id="gallery">
         <div class="container">
           <div class="section-head centered reveal">
-            <p class="eyebrow">Gallery</p>
-            <h2>Material, Mood, and Detail</h2>
-            <p>A small gallery for the more atmospheric product shots and styling images that help visitors feel the brand before they enquire.</p>
+            <p class="eyebrow" id="gallery-eyebrow">Gallery</p>
+            <h2 id="gallery-heading">Material, Mood, and Detail</h2>
+            <p id="gallery-description">A small gallery for the more atmospheric product shots and styling images that help visitors feel the brand before they enquire.</p>
           </div>
           <div class="gallery-grid" id="gallery-grid"></div>
         </div>
@@ -2810,17 +2825,16 @@
       <section class="section" id="portfolio">
         <div class="container">
           <div class="section-head reveal">
-            <p class="eyebrow">Previous Work</p>
-            <h2>Crafted for Real Homes</h2>
-            <p>Every project here was made for a real family, measured on-site, and delivered with care.</p>
+            <p class="eyebrow" id="portfolio-eyebrow">Previous Work</p>
+            <h2 id="portfolio-heading">Crafted for Real Homes</h2>
+            <p id="portfolio-description">Every project here was made for a real family, measured on-site, and delivered with care.</p>
           </div>
           <div class="portfolio-tabs reveal" id="portfolio-tabs" role="tablist" aria-label="Portfolio filters"></div>
           <div class="portfolio-grid" id="portfolio-grid"></div>
         </div>
         <div class="video-row reveal">
-          <h3>Watch Our Craft</h3>
-          <!-- REPLACE: paste your YouTube embed iframe or <video> tag here -->
-          <div class="video-wrapper">[ Your Workshop / Craft Video Here ]</div>
+          <h3 id="craft-video-title">Watch Our Craft</h3>
+          <div class="video-wrapper" id="craft-video-wrapper">[ Your Workshop / Craft Video Here ]</div>
         </div>
       </section>
 
@@ -2890,8 +2904,8 @@
       <section class="section dark" id="why-us">
         <div class="container">
           <div class="section-head centered reveal">
-            <p class="eyebrow">Why Choose Us</p>
-            <h2>Why Families Trust Us</h2>
+            <p class="eyebrow" id="why-eyebrow">Why Choose Us</p>
+            <h2 id="why-heading">Why Families Trust Us</h2>
           </div>
           <div class="why-grid" id="why-grid"></div>
         </div>
@@ -2900,8 +2914,8 @@
       <section class="section alt" id="testimonials">
         <div class="container">
           <div class="section-head centered reveal">
-            <p class="eyebrow">What Clients Say</p>
-            <h2>Real Homes, Real Stories</h2>
+            <p class="eyebrow" id="testimonials-eyebrow">What Clients Say</p>
+            <h2 id="testimonials-heading">Real Homes, Real Stories</h2>
           </div>
           <div class="testimonials-track reveal" id="testimonials-track"></div>
           <div class="testimonial-dots" id="testimonial-dots"></div>
@@ -2911,21 +2925,22 @@
       <section class="section" id="about">
         <div class="container about-grid">
           <div class="about-visual reveal">
-            <div class="about-media">
-              <!-- REPLACE: <img src="images/about/workshop.jpg" alt="[describe image]"> -->
+            <div class="about-media" id="about-media">
               <div class="img-placeholder" data-label="Workshop or artisan photo - replace with real photography" role="img" aria-label="Workshop photo placeholder">
                 <span>Workshop Photo</span>
               </div>
             </div>
           </div>
           <div class="about-copy reveal">
-            <p class="eyebrow">Our Story</p>
-            <h2>A Workshop, Not a Factory</h2>
-            <p>Started in [Year] in the heart of Rajasthan, our workshop was built on one simple belief - furniture should last longer than the home it lives in.</p>
-            <p>We are three generations of woodworkers. My grandfather built his first chair without a single nail. My father added the lathe, the router, the finish. I added the studio and the website.</p>
-            <p>But the hands are still the same.</p>
+            <p class="eyebrow" id="about-eyebrow">Our Story</p>
+            <h2 id="about-heading">A Workshop, Not a Factory</h2>
+            <div id="about-paragraphs">
+              <p>Started in [Year] in the heart of Rajasthan, our workshop was built on one simple belief - furniture should last longer than the home it lives in.</p>
+              <p>We are three generations of woodworkers. My grandfather built his first chair without a single nail. My father added the lathe, the router, the finish. I added the studio and the website.</p>
+              <p>But the hands are still the same.</p>
+            </div>
 
-            <div class="stats-grid">
+            <div class="stats-grid" id="about-stats">
               <div class="stat-box">
                 <div class="stat-number" data-target="15" data-suffix="+">0</div>
                 <div class="stat-label">Years</div>
@@ -2950,8 +2965,8 @@
       <section class="section alt" id="process">
         <div class="container">
           <div class="section-head centered reveal">
-            <p class="eyebrow">Our Process</p>
-            <h2>From Conversation to Craft</h2>
+            <p class="eyebrow" id="process-eyebrow">Our Process</p>
+            <h2 id="process-heading">From Conversation to Craft</h2>
           </div>
           <div class="process-shell reveal" id="process-shell">
             <div class="process-line" aria-hidden="true">
@@ -2965,8 +2980,8 @@
       <section class="section" id="contact">
         <div class="container">
           <div class="section-head centered reveal">
-            <p class="eyebrow">Get in Touch</p>
-            <h2>Let's Build Something Together</h2>
+            <p class="eyebrow" id="contact-eyebrow">Get in Touch</p>
+            <h2 id="contact-heading">Let's Build Something Together</h2>
           </div>
           <div class="contact-grid">
             <div class="contact-form-card reveal">
@@ -3033,12 +3048,11 @@
                 </div>
                 <div class="contact-detail">
                   <h3>Working Hours</h3>
-                  <p>Monday - Saturday<br>9:00 AM - 7:00 PM<br>Sunday: By Appointment</p>
+                  <p id="contact-working-hours">Monday - Saturday<br>9:00 AM - 7:00 PM<br>Sunday: By Appointment</p>
                 </div>
               </div>
 
-              <!-- REPLACE: Paste your Google Maps iframe embed code here -->
-              <div class="img-placeholder map-placeholder" data-label="Your workshop location on Google Maps" role="img" aria-label="Google Maps placeholder">
+              <div class="img-placeholder map-placeholder" id="contact-map" data-label="Your workshop location on Google Maps" role="img" aria-label="Google Maps placeholder">
                 <span>Map Placeholder</span>
               </div>
             </div>
@@ -3114,6 +3128,133 @@
   </button>
 
   <script>
+    const defaultHomePage = {
+      hero: {
+        eyebrow: "Handcrafted in Rajasthan",
+        titleLine1: "Furniture",
+        titleLine2: "built to last",
+        titleLine3: "generations.",
+        description: "We make solid hardwood furniture by hand - beds, sofas, tables, and more - built exactly to your vision, delivered to your home.",
+        primaryCtaLabel: "Explore Collections",
+        secondaryCtaLabel: "View Our Work",
+        statsText: "15+ Years | 2,400+ Pieces | 500+ Happy Homes"
+      },
+      gallery: {
+        eyebrow: "Gallery",
+        heading: "Material, Mood, and Detail",
+        description: "A small gallery for the more atmospheric product shots and styling images that help visitors feel the brand before they enquire.",
+        items: []
+      },
+      portfolio: {
+        eyebrow: "Previous Work",
+        heading: "Crafted for Real Homes",
+        description: "Every project here was made for a real family, measured on-site, and delivered with care.",
+        videoTitle: "Watch Our Craft",
+        videoEmbedUrl: ""
+      },
+      whyChooseUs: {
+        eyebrow: "Why Choose Us",
+        heading: "Why Families Trust Us",
+        items: [
+          {
+            icon: "wood",
+            title: "Only Solid Hardwood",
+            body: "No MDF, no shortcuts. Sheesham, Teak, and Mango Wood only - dense, durable, and beautiful."
+          },
+          {
+            icon: "hands",
+            title: "Made by Hand",
+            body: "Every joint is cut, fitted, and finished by artisans in our Rajasthan workshop."
+          },
+          {
+            icon: "ruler",
+            title: "Built to Your Size",
+            body: "No standard catalogue sizes. We measure your space and build exactly for it."
+          },
+          {
+            icon: "truck",
+            title: "Delivered & Assembled",
+            body: "We handle delivery and on-site assembly anywhere in Rajasthan and beyond."
+          },
+          {
+            icon: "leaf",
+            title: "Responsibly Sourced",
+            body: "All our wood comes from certified, sustainable sources. Built to last decades."
+          },
+          {
+            icon: "chat",
+            title: "Direct from the Maker",
+            body: "No dealers, no markups. You talk to us directly - transparent pricing, honest timelines."
+          }
+        ]
+      },
+      about: {
+        eyebrow: "Our Story",
+        heading: "A Workshop, Not a Factory",
+        paragraphs: [
+          { text: "Started in [Year] in the heart of Rajasthan, our workshop was built on one simple belief - furniture should last longer than the home it lives in." },
+          { text: "We are three generations of woodworkers. My grandfather built his first chair without a single nail. My father added the lathe, the router, the finish. I added the studio and the website." },
+          { text: "But the hands are still the same." }
+        ],
+        stats: [
+          { value: 15, suffix: "+", label: "Years" },
+          { value: 2400, suffix: "+", label: "Pieces Delivered" },
+          { value: 500, suffix: "+", label: "Families" },
+          { value: 12, suffix: "", label: "Wood Species Worked" }
+        ]
+      },
+      process: {
+        eyebrow: "Our Process",
+        heading: "From Conversation to Craft",
+        steps: [
+          { number: "01", title: "Consultation", body: "We understand your space, needs, and taste." },
+          { number: "02", title: "Measurement", body: "We visit your home or you share dimensions." },
+          { number: "03", title: "Wood Selection", body: "Choose your wood species, grain, and finish." },
+          { number: "04", title: "Handcrafting", body: "Our artisans build your piece over 2-4 weeks." },
+          { number: "05", title: "Finishing & Polish", body: "Sanding, staining, sealing - by hand." },
+          { number: "06", title: "Delivery & Assembly", body: "We bring it to your door and set it up." }
+        ]
+      },
+      contact: {
+        eyebrow: "Get in Touch",
+        heading: "Let's Build Something Together",
+        workingHours: "Monday - Saturday\n9:00 AM - 7:00 PM\nSunday: By Appointment",
+        mapEmbedUrl: ""
+      },
+      previousWork: {
+        eyebrow: "Previous Work",
+        heading: "Our Completed Projects",
+        description: "",
+        items: []
+      }
+    };
+    const defaultTestimonialSection = {
+      eyebrow: "What Clients Say",
+      heading: "Real Homes, Real Stories",
+      items: [
+        {
+          quote: "The dining table they crafted for us is extraordinary. Solid sheesham, perfect finish. It's the centrepiece of our home and we get compliments every time.",
+          author: "Priya M., Jaipur",
+          rating: 5
+        },
+        {
+          quote: "We ordered a full bedroom set - bed, wardrobe, dressing table. Everything arrived on time, assembled perfectly. Exceptional quality.",
+          author: "Rahul & Sunita K., Jodhpur",
+          rating: 5
+        },
+        {
+          quote: "I gave them a sketch on paper and they turned it into the exact coffee table I had imagined. The craftsmanship is simply outstanding.",
+          author: "Ankit S., Delhi",
+          rating: 5
+        },
+        {
+          quote: "Been using their furniture for 8 years now. Not a single joint loose, not a scratch that wasn't from us. Built to truly last.",
+          author: "Meena D., Udaipur",
+          rating: 5
+        }
+      ]
+    };
+
     let siteConfig = {
       whatsappNumber: window.__SITE_CONFIG__?.whatsappNumber || "__WHATSAPP_NUMBER__",
       displayPhone: window.__SITE_CONFIG__?.displayPhone || "__DISPLAY_PHONE__",
@@ -3121,6 +3262,12 @@
       instagramUrl: window.__SITE_CONFIG__?.instagramUrl || "__INSTAGRAM_URL__",
       contactEmail: window.__SITE_CONFIG__?.contactEmail || "__CONTACT_EMAIL__",
       workshopAddress: window.__SITE_CONFIG__?.workshopAddress || "[Full Address Line 1]\n[Jaipur, Rajasthan - pincode]",
+      themeSettings: window.__SITE_CONFIG__?.themeSettings || {
+        colorTheme: "heritage",
+        fontPairing: "classic"
+      },
+      homePage: window.__SITE_CONFIG__?.homePage || defaultHomePage,
+      testimonialSection: window.__SITE_CONFIG__?.testimonialSection || defaultTestimonialSection,
       paymentSettings: window.__SITE_CONFIG__?.paymentSettings || {
         acceptUpi: true,
         acceptBankTransfer: true,
@@ -3147,66 +3294,9 @@
     let galleryItems = [];
     let products = [];
 
-    const whyData = [
-      {
-        icon: "wood",
-        title: "Only Solid Hardwood",
-        body: "No MDF, no shortcuts. Sheesham, Teak, and Mango Wood only - dense, durable, and beautiful."
-      },
-      {
-        icon: "hands",
-        title: "Made by Hand",
-        body: "Every joint is cut, fitted, and finished by artisans in our Rajasthan workshop."
-      },
-      {
-        icon: "ruler",
-        title: "Built to Your Size",
-        body: "No standard catalogue sizes. We measure your space and build exactly for it."
-      },
-      {
-        icon: "truck",
-        title: "Delivered & Assembled",
-        body: "We handle delivery and on-site assembly anywhere in Rajasthan and beyond."
-      },
-      {
-        icon: "leaf",
-        title: "Responsibly Sourced",
-        body: "All our wood comes from certified, sustainable sources. Built to last decades."
-      },
-      {
-        icon: "chat",
-        title: "Direct from the Maker",
-        body: "No dealers, no markups. You talk to us directly - transparent pricing, honest timelines."
-      }
-    ];
-
-    const testimonials = [
-      {
-        quote: "The dining table they crafted for us is extraordinary. Solid sheesham, perfect finish. It's the centrepiece of our home and we get compliments every time.",
-        author: "Priya M., Jaipur"
-      },
-      {
-        quote: "We ordered a full bedroom set - bed, wardrobe, dressing table. Everything arrived on time, assembled perfectly. Exceptional quality.",
-        author: "Rahul & Sunita K., Jodhpur"
-      },
-      {
-        quote: "I gave them a sketch on paper and they turned it into the exact coffee table I had imagined. The craftsmanship is simply outstanding.",
-        author: "Ankit S., Delhi"
-      },
-      {
-        quote: "Been using their furniture for 8 years now. Not a single joint loose, not a scratch that wasn't from us. Built to truly last.",
-        author: "Meena D., Udaipur"
-      }
-    ];
-
-    const processSteps = [
-      { number: "01", title: "Consultation", body: "We understand your space, needs, and taste." },
-      { number: "02", title: "Measurement", body: "We visit your home or you share dimensions." },
-      { number: "03", title: "Wood Selection", body: "Choose your wood species, grain, and finish." },
-      { number: "04", title: "Handcrafting", body: "Our artisans build your piece over 2-4 weeks." },
-      { number: "05", title: "Finishing & Polish", body: "Sanding, staining, sealing - by hand." },
-      { number: "06", title: "Delivery & Assembly", body: "We bring it to your door and set it up." }
-    ];
+    let whyData = defaultHomePage.whyChooseUs.items.slice();
+    let testimonials = defaultTestimonialSection.items.slice();
+    let processSteps = defaultHomePage.process.steps.slice();
 
     const priceRanges = [
       { label: "Under " + RUPEE + "10,000", key: "under-10000", test: (value) => value < 10000 },
@@ -3356,10 +3446,160 @@
       });
     }
 
+    function mergeContent(fallback, incoming) {
+      if (Array.isArray(incoming)) return incoming;
+      if (!incoming || typeof incoming !== "object") return fallback;
+      return Object.entries(fallback).reduce((merged, [key, value]) => {
+        merged[key] = mergeContent(value, incoming[key]);
+        return merged;
+      }, { ...incoming });
+    }
+
+    function getMediaUrl(media) {
+      if (!media || typeof media === "string" || typeof media === "number") return "";
+      return media.url || "";
+    }
+
+    function getMediaAlt(media, fallback) {
+      if (!media || typeof media === "string" || typeof media === "number") return fallback;
+      return media.alt || fallback;
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      })[character]);
+    }
+
+    function setText(id, value) {
+      const node = document.getElementById(id);
+      if (node && value !== undefined && value !== null) node.textContent = value;
+    }
+
+    function setImage(id, media, fallbackAlt) {
+      const image = document.getElementById(id);
+      const url = getMediaUrl(media);
+      if (!image || !url) return;
+      image.src = url;
+      image.alt = getMediaAlt(media, fallbackAlt);
+    }
+
+    function renderMediaImage(media, fallbackLabel, loading = "lazy") {
+      const url = getMediaUrl(media);
+      const alt = getMediaAlt(media, fallbackLabel);
+      return url
+        ? `<img src="${escapeHTML(url)}" alt="${escapeHTML(alt)}" loading="${loading}" style="width:100%;height:100%;object-fit:cover;">`
+        : "";
+    }
+
+    function getConfiguredGalleryItems(items) {
+      if (!Array.isArray(items)) return [];
+      return items.map((item) => {
+        const title = item.title || "Gallery Image";
+        return {
+          title,
+          detail: item.detail || "",
+          size: item.size === "normal" ? "" : item.size || "",
+          label: getMediaAlt(item.image, title),
+          imageUrl: getMediaUrl(item.image)
+        };
+      });
+    }
+
+    function getVideoEmbedUrl(url) {
+      const rawUrl = String(url || "").trim();
+      if (!rawUrl) return "";
+
+      try {
+        const parsed = new URL(rawUrl);
+        if (parsed.hostname.includes("youtube.com")) {
+          const id = parsed.searchParams.get("v") || parsed.pathname.split("/").filter(Boolean).pop();
+          return id ? "https://www.youtube.com/embed/" + encodeURIComponent(id) : "";
+        }
+        if (parsed.hostname.includes("youtu.be")) {
+          const id = parsed.pathname.split("/").filter(Boolean)[0];
+          return id ? "https://www.youtube.com/embed/" + encodeURIComponent(id) : "";
+        }
+        if (parsed.hostname.includes("vimeo.com")) {
+          const id = parsed.pathname.split("/").filter(Boolean).pop();
+          return id ? "https://player.vimeo.com/video/" + encodeURIComponent(id) : "";
+        }
+        return rawUrl;
+      } catch {
+        return "";
+      }
+    }
+
+    function applyThemeSettings() {
+      const themes = {
+        heritage: {
+          "--cream": "#F5F0E8",
+          "--cream-dark": "#EDE5D8",
+          "--walnut": "#3B2314",
+          "--amber": "#C07828",
+          "--sage": "#8A9A7B",
+          "--taupe": "#B5A898",
+          "--white": "#FAF7F2",
+          "--text-dark": "#2A1A0E",
+          "--text-mid": "#6B5744",
+          "--text-light": "#A89380"
+        },
+        forest: {
+          "--cream": "#F4F0E6",
+          "--cream-dark": "#E5E1D2",
+          "--walnut": "#263326",
+          "--amber": "#A36B2E",
+          "--sage": "#6F835F",
+          "--taupe": "#A7A08D",
+          "--white": "#FBF8EF",
+          "--text-dark": "#1E281F",
+          "--text-mid": "#53604B",
+          "--text-light": "#879078"
+        },
+        charcoal: {
+          "--cream": "#F1EEE8",
+          "--cream-dark": "#DED9CF",
+          "--walnut": "#252423",
+          "--amber": "#B86F3C",
+          "--sage": "#6F837E",
+          "--taupe": "#A89D91",
+          "--white": "#FAF9F6",
+          "--text-dark": "#1F1E1D",
+          "--text-mid": "#5F5A54",
+          "--text-light": "#92887D"
+        }
+      };
+      const fontPairings = {
+        classic: {
+          "--font-display": '"Cormorant Garamond", Georgia, serif',
+          "--font-body": '"Jost", sans-serif'
+        },
+        modern: {
+          "--font-display": '"Jost", Arial, sans-serif',
+          "--font-body": '"Jost", Arial, sans-serif'
+        },
+        editorial: {
+          "--font-display": 'Georgia, "Times New Roman", serif',
+          "--font-body": '"Jost", Arial, sans-serif'
+        }
+      };
+      const root = document.documentElement;
+      const selectedTheme = themes[siteConfig.themeSettings?.colorTheme] || themes.heritage;
+      const selectedFonts = fontPairings[siteConfig.themeSettings?.fontPairing] || fontPairings.classic;
+      Object.entries({ ...selectedTheme, ...selectedFonts }).forEach(([property, value]) => {
+        root.style.setProperty(property, value);
+      });
+    }
+
     async function loadSiteConfig() {
       try {
-        const response = await fetch("/api/globals/site-settings?depth=0", {
-          headers: { Accept: "application/json" }
+        const response = await fetch("/api/globals/site-settings?depth=1", {
+          headers: { Accept: "application/json", "Cache-Control": "no-cache" },
+          cache: "no-store"
         });
         if (!response.ok) return;
         const data = await response.json();
@@ -3371,6 +3611,12 @@
           instagramUrl: data.instagramUrl || siteConfig.instagramUrl,
           contactEmail: data.contactEmail || siteConfig.contactEmail,
           workshopAddress: data.workshopAddress || siteConfig.workshopAddress,
+          themeSettings: {
+            ...siteConfig.themeSettings,
+            ...(data.themeSettings || {})
+          },
+          homePage: mergeContent(defaultHomePage, data.homePage),
+          testimonialSection: mergeContent(defaultTestimonialSection, data.testimonialSection),
           paymentSettings: {
             ...siteConfig.paymentSettings,
             ...(data.paymentSettings || {})
@@ -3393,7 +3639,138 @@
       });
     }
 
+    function setStatsText(value) {
+      const statsNode = document.getElementById("hero-stats");
+      if (!statsNode || !value) return;
+      const parts = String(value).split("|").map((part) => part.trim()).filter(Boolean);
+      statsNode.replaceChildren();
+      parts.forEach((part, index) => {
+        if (index > 0) {
+          const divider = document.createElement("span");
+          divider.innerHTML = "&middot;";
+          statsNode.appendChild(divider);
+        }
+        const span = document.createElement("span");
+        span.textContent = part;
+        statsNode.appendChild(span);
+      });
+    }
+
+    function renderAboutSection(aboutSettings) {
+      setText("about-eyebrow", aboutSettings.eyebrow);
+      setText("about-heading", aboutSettings.heading);
+
+      const aboutImage = renderMediaImage(aboutSettings.image, "Workshop photo");
+      if (aboutImage) {
+        document.getElementById("about-media").innerHTML = aboutImage;
+      }
+
+      if (Array.isArray(aboutSettings.paragraphs)) {
+        const paragraphs = aboutSettings.paragraphs
+          .map((item) => String(item.text || "").trim())
+          .filter(Boolean);
+        if (paragraphs.length) {
+          document.getElementById("about-paragraphs").innerHTML = paragraphs
+            .map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`)
+            .join("");
+        }
+      }
+
+      if (Array.isArray(aboutSettings.stats)) {
+        const stats = aboutSettings.stats.filter((item) => item.label && item.value !== undefined && item.value !== null);
+        if (stats.length) {
+          document.getElementById("about-stats").innerHTML = stats.map((item) => `
+            <div class="stat-box">
+              <div class="stat-number" data-target="${Number(item.value) || 0}" data-suffix="${escapeHTML(item.suffix || "")}">0</div>
+              <div class="stat-label">${escapeHTML(item.label)}</div>
+            </div>
+          `).join("");
+        }
+      }
+    }
+
+
+
+    function renderCraftVideo(portfolioSettings) {
+      const wrapper = document.getElementById("craft-video-wrapper");
+      if (!wrapper) return;
+
+      const videoUrl = getMediaUrl(portfolioSettings.videoFile);
+      const posterUrl = getMediaUrl(portfolioSettings.videoPoster);
+      if (videoUrl) {
+        const posterAttr = posterUrl ? ` poster="${escapeHTML(posterUrl)}"` : "";
+        wrapper.innerHTML = `<video controls playsinline preload="metadata"${posterAttr}><source src="${escapeHTML(videoUrl)}"></video>`;
+        return;
+      }
+
+      const embedUrl = getVideoEmbedUrl(portfolioSettings.videoEmbedUrl);
+      if (embedUrl) {
+        wrapper.innerHTML = `<iframe src="${escapeHTML(embedUrl)}" title="${escapeHTML(portfolioSettings.videoTitle || "Workshop video")}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+      }
+    }
+
+    function renderMap(mapEmbedUrl) {
+      const mapNode = document.getElementById("contact-map");
+      const embedUrl = getVideoEmbedUrl(mapEmbedUrl);
+      if (!mapNode || !embedUrl) return;
+      mapNode.innerHTML = `<iframe src="${escapeHTML(embedUrl)}" title="Workshop location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="width:100%;height:100%;border:0;"></iframe>`;
+    }
+
+    function applyHomePageConfig() {
+      const homePage = mergeContent(defaultHomePage, siteConfig.homePage);
+      const testimonialSection = mergeContent(defaultTestimonialSection, siteConfig.testimonialSection);
+
+      setText("hero-eyebrow", homePage.hero.eyebrow);
+      setText("hero-title-line-1", homePage.hero.titleLine1);
+      setText("hero-title-line-2", homePage.hero.titleLine2);
+      setText("hero-title-line-3", homePage.hero.titleLine3);
+      setText("hero-description", homePage.hero.description);
+      setText("hero-primary-cta", homePage.hero.primaryCtaLabel);
+      setText("hero-secondary-cta", homePage.hero.secondaryCtaLabel);
+      setStatsText(homePage.hero.statsText);
+      setImage("hero-before-image", homePage.hero.beforeImage, "Hero before image");
+      setImage("hero-after-image", homePage.hero.afterImage, "Hero after image");
+
+      setText("gallery-eyebrow", homePage.gallery.eyebrow);
+      setText("gallery-heading", homePage.gallery.heading);
+      setText("gallery-description", homePage.gallery.description);
+
+      setText("portfolio-eyebrow", homePage.portfolio.eyebrow);
+      setText("portfolio-heading", homePage.portfolio.heading);
+      setText("portfolio-description", homePage.portfolio.description);
+      setText("craft-video-title", homePage.portfolio.videoTitle);
+      renderCraftVideo(homePage.portfolio);
+
+      setText("why-eyebrow", homePage.whyChooseUs.eyebrow);
+      setText("why-heading", homePage.whyChooseUs.heading);
+      if (Array.isArray(homePage.whyChooseUs.items)) {
+        whyData = homePage.whyChooseUs.items;
+      }
+
+      setText("testimonials-eyebrow", testimonialSection.eyebrow);
+      setText("testimonials-heading", testimonialSection.heading);
+      if (Array.isArray(testimonialSection.items)) {
+        testimonials = testimonialSection.items;
+      }
+
+      renderAboutSection(homePage.about);
+
+      setText("process-eyebrow", homePage.process.eyebrow);
+      setText("process-heading", homePage.process.heading);
+      if (Array.isArray(homePage.process.steps)) {
+        processSteps = homePage.process.steps;
+      }
+
+      setText("contact-eyebrow", homePage.contact.eyebrow);
+      setText("contact-heading", homePage.contact.heading);
+      setMultilineText(document.getElementById("contact-working-hours"), homePage.contact.workingHours);
+      renderMap(homePage.contact.mapEmbedUrl);
+    }
+
     function applySiteConfig() {
+      applyThemeSettings();
+      applyHomePageConfig();
+
       const floatingWhatsApp = document.getElementById("floating-whatsapp");
       if (floatingWhatsApp) {
         floatingWhatsApp.href = "https://wa.me/" + siteConfig.whatsappNumber;
@@ -3478,6 +3855,7 @@
         { id: 22, name: "Wooden Table Lamp", category: "Lamps", wood: "Teak", price: 2800, dims: "Table", imageUrl: null },
         { id: 23, name: "Floor Lamp", category: "Lamps", wood: "Sheesham", price: 4200, dims: "Floor Standing", imageUrl: null }
       ];
+      const configuredGalleryItems = getConfiguredGalleryItems(siteConfig.homePage?.gallery?.items);
 
       function getPayloadImageUrl(entry) {
         const firstImage = entry?.images && entry.images[0];
@@ -3539,14 +3917,29 @@
           imageUrl: getPayloadImageUrl(item)
         }));
 
-        galleryItems = fallbackGalleryItems;
+        // Merge Previous Work items from Site Settings into portfolio
+        const pwItems = siteConfig.homePage?.previousWork?.items;
+        if (Array.isArray(pwItems) && pwItems.length) {
+          const pwMapped = pwItems.map((pw, i) => ({
+            id: pw.id || "pw-" + i,
+            title: pw.title || "Untitled Project",
+            group: categoryMap[pw.category] || "Custom",
+            location: pw.location || "",
+            height: masonryHeights[(portfolioItems.length + i) % masonryHeights.length],
+            label: pw.title + (pw.location ? " - " + pw.location : ""),
+            imageUrl: getMediaUrl(pw.image)
+          }));
+          portfolioItems = portfolioItems.concat(pwMapped);
+        }
+
+        galleryItems = configuredGalleryItems.length ? configuredGalleryItems : fallbackGalleryItems;
 
         console.log("[MDL] CMS data loaded - products:", products.length, "| portfolio:", portfolioItems.length);
       } catch (error) {
         console.warn("[MDL] CMS fetch failed, using fallback data:", error.message);
         collections = fallbackCollections;
         portfolioItems = fallbackPortfolioItems;
-        galleryItems = fallbackGalleryItems;
+        galleryItems = configuredGalleryItems.length ? configuredGalleryItems : fallbackGalleryItems;
         products = fallbackProducts;
       }
     }
@@ -3763,20 +4156,26 @@
       whyGrid.innerHTML = whyData.map((item) => `
         <article class="why-card reveal">
           <div class="why-icon">${iconMarkup(item.icon)}</div>
-          <h3>${item.title}</h3>
-          <p>${item.body}</p>
+          <h3>${escapeHTML(item.title)}</h3>
+          <p>${escapeHTML(item.body)}</p>
         </article>
       `).join("");
     }
 
     function renderTestimonials() {
+      if (!testimonials.length) {
+        testimonialsTrack.innerHTML = "";
+        testimonialDots.innerHTML = "";
+        return;
+      }
+
       testimonialsTrack.innerHTML = testimonials.map((item) => `
         <article class="testimonial-card">
           <div>
-            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <blockquote>"${item.quote}"</blockquote>
+            <div class="testimonial-stars">${"&#9733;".repeat(Math.max(1, Math.min(5, Number(item.rating) || 5)))}</div>
+            <blockquote>"${escapeHTML(item.quote)}"</blockquote>
           </div>
-          <cite>${item.author}</cite>
+          <cite>${escapeHTML(item.author)}</cite>
         </article>
       `).join("");
 
@@ -3788,9 +4187,9 @@
     function renderProcess() {
       processGrid.innerHTML = processSteps.map((item) => `
         <article class="process-step">
-          <div class="process-marker">${item.number}</div>
-          <h3>${item.title}</h3>
-          <p>${item.body}</p>
+          <div class="process-marker">${escapeHTML(item.number)}</div>
+          <h3>${escapeHTML(item.title)}</h3>
+          <p>${escapeHTML(item.body)}</p>
         </article>
       `).join("");
     }
@@ -4321,6 +4720,8 @@
     }
 
     function setupTestimonials() {
+      if (!testimonials.length) return;
+
       function goToTestimonial(index) {
         const cards = testimonialsTrack.querySelectorAll(".testimonial-card");
         if (!cards.length) return;

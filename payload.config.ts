@@ -32,7 +32,7 @@ const db = mongoURL
       },
       migrationDir: path.resolve(dirname, 'src/migrations'),
       prodMigrations: migrations,
-      push: true,
+      push: false,
     })
 
 export default buildConfig({

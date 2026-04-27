@@ -21,7 +21,7 @@ export const Media: CollectionConfig = {
   },
   upload: {
     staticDir: path.resolve(dirname, '../../media'),
-    mimeTypes: ['image/*'],
+    mimeTypes: ['image/*', 'video/*'],
   },
   fields: [
     {
