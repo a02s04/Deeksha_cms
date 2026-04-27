@@ -1,0 +1,9 @@
+.pnpm-store
+.next
+node_modules
+media
+Images2
+images
+scripts
+.env
+deeksha-cms.db

@@ -1,0 +1,98 @@
+:root {
+  --color-base-0: #fffaf3;
+  --color-base-50: #f8efdf;
+  --color-base-100: #f0e2cb;
+  --color-base-150: #e4cfaf;
+  --color-base-200: #d7bc97;
+  --color-base-250: #caab82;
+  --color-base-300: #bb976c;
+  --color-base-350: #aa8459;
+  --color-base-400: #977148;
+  --color-base-450: #845f3b;
+  --color-base-500: #714f30;
+  --color-base-550: #62442a;
+  --color-base-600: #533924;
+  --color-base-650: #452f1e;
+  --color-base-700: #392619;
+  --color-base-750: #2f1f15;
+  --color-base-800: #271911;
+  --color-base-850: #20140d;
+  --color-base-900: #190f09;
+  --color-base-950: #120a06;
+  --color-base-1000: #0d0604;
+
+  --color-success-50: #fff6e9;
+  --color-success-100: #ffe8c5;
+  --color-success-150: #ffd89f;
+  --color-success-200: #ffc576;
+  --color-success-250: #f6b254;
+  --color-success-300: #ea9b34;
+  --color-success-350: #da851f;
+  --color-success-400: #c87319;
+  --color-success-450: #af6118;
+  --color-success-500: #955116;
+  --color-success-550: #804613;
+  --color-success-600: #6c3a11;
+  --color-success-650: #5a300f;
+  --color-success-700: #48260c;
+  --color-success-750: #391d09;
+  --color-success-800: #2b1507;
+  --color-success-850: #1f0f05;
+  --color-success-900: #140903;
+  --color-success-950: #0b0501;
+
+  --theme-bg: var(--color-base-0);
+  --theme-input-bg: var(--color-base-50);
+  --theme-text: var(--color-base-800);
+  --theme-border-color: var(--color-base-200);
+}
+
+html {
+  --theme-bg: var(--color-base-0);
+  --theme-input-bg: var(--color-base-50);
+  --theme-text: var(--color-base-800);
+}
+
+html[data-theme='light'],
+html:not([data-theme='dark']) {
+  --theme-bg: var(--color-base-0);
+  --theme-input-bg: var(--color-base-50);
+  --theme-text: var(--color-base-800);
+}
+
+html[data-theme='dark'] {
+  --theme-bg: var(--color-base-900);
+  --theme-input-bg: var(--color-base-850);
+  --theme-text: var(--color-base-100);
+}
+
+body {
+  color: var(--theme-text);
+}
+
+input,
+textarea,
+select {
+  color: var(--theme-text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--theme-elevation-500);
+  opacity: 1;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--theme-text);
+  -webkit-box-shadow: 0 0 0 1000px var(--theme-input-bg) inset;
+  box-shadow: 0 0 0 1000px var(--theme-input-bg) inset;
+  transition: background-color 9999s ease-in-out 0s;
+}

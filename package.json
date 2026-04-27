@@ -1,0 +1,31 @@
+{
+	"type": "module",
+	"dependencies": {
+		"@payloadcms/db-mongodb": "^3.80.0",
+		"@payloadcms/db-sqlite": "3.80.0",
+		"@payloadcms/next": "3.80.0",
+		"@payloadcms/richtext-lexical": "^3.80.0",
+		"graphql": "^16.13.2",
+		"next": "15.4.11",
+		"payload": "^3.80.0",
+		"react": "19.1.0",
+		"react-dom": "19.1.0",
+		"sass": "^1.98.0",
+		"sharp": "^0.34.5"
+	},
+	"devDependencies": {
+		"@types/node": "^25.5.0",
+		"@types/react": "^19.2.14",
+		"@types/react-dom": "^19.2.3",
+		"typescript": "^6.0.2"
+	},
+	"scripts": {
+		"predev": "payload generate:importmap",
+		"dev": "next dev",
+		"prebuild": "payload generate:importmap",
+		"build": "next build",
+		"start": "next start",
+		"generate:importmap": "payload generate:importmap",
+		"generate:types": "payload generate:types"
+	}
+}
