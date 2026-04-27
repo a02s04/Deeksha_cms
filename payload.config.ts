@@ -20,7 +20,6 @@ const dirname = path.dirname(filename)
 
 const mongoURL = process.env.DATABASE_URI || process.env.MONGODB_URI
 const postgresURL = process.env.POSTGRES_URL || process.env.DATABASE_URL_POSTGRES
-const sqliteURL = process.env.DATABASE_URL || 'file:./deeksha-cms.db'
 const serverURL = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
 
 const getDB = () => {
@@ -29,8 +28,7 @@ const getDB = () => {
   }
   return postgresAdapter({
     pool: { connectionString: postgresURL || '' },
-    push: false,
-    migrationDir: path.resolve(dirname, 'src/migrations'),
+    push: true,
   })
 }
 
